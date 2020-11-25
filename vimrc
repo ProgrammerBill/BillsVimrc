@@ -34,11 +34,70 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set encoding=utf-8
 
+set showcmd " show input command.
+
+set clipboard=unnamedplus   " Allow copy to clipboard by y
+
 "Map keys
 nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
 nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
 nnoremap <F3> :Tlist<CR>                                          " Add Tlist switch.
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
+
+filetype plugin on " Turn on filetype plugin.
+
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
+
+
+func SetTitle()
+    let authorName = 'BillCong'               " AuthorName used by created files
+    let mailAddress = 'cjcbill@gmail.com' " MailAddress used by created files
+    if &filetype == 'sh'
+        call setline(1,          "\#########################################################################")
+        call append(line("."),   "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: ".authorName)
+        call append(line(".")+2, "\# mail: ".mailAddress)
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+    elseif &filetype == 'markdown'
+        call setline(1,          "---")
+        call append(line("."),   "title: ".expand("%"))
+        call append(line(".")+1, "subtitle: ")
+        call append(line(".")+2, "author: ".authorName)
+        call append(line(".")+3, "mail: ".mailAddress)
+        call append(line(".")+4, "changelog:")
+        call append(line(".")+5, "- ver: 1.0")
+        call append(line(".")+6, "  date: ".strftime("%Y.%m.%d"))
+        call append(line(".")+7, "  author:")
+        call append(line(".")+8, "  desc: ")
+        call append(line(".")+9, "")
+        call append(line(".")+10, "---")
+        call append(line(".")+11, "")
+    else
+        call setline(1,          "/*************************************************************************")
+        call append(line("."),   "    > File Name: ".expand("%"))
+        call append(line(".")+1, "    > Author: ".authorName)
+        call append(line(".")+2, "    > Mail: ".mailAddress)
+        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+        call append(line(".")+4, " ************************************************************************/")
+        call append(line(".")+5, "")
+    endif
+    if &filetype == 'cpp'
+        call append(line(".")+6, "#include<iostream>")
+        call append(line(".")+7, "using namespace std;")
+        call append(line(".")+8, "")
+    endif
+    if &filetype == 'c'
+        call append(line(".")+6, "#include<stdio.h>")
+        call append(line(".")+7, "")
+    endif
+    autocmd BufNewFile * normal G
+endfunc
+
+" Vim Plugins
 
 "Tlist Configuration
 let Tlist_Auto_Open = 1                 " Auto open Tlist.
