@@ -5,6 +5,13 @@
 "|____/|_|_|_|\____\___/|_| |_|\__, | |___/    \_/  |_|_| |_| |_|
 "                              |___/
 "
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'preservim/tagbar'
+call vundle#end()            " required
+
 
 set nu " Show line numbers.
 
@@ -34,21 +41,85 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set encoding=utf-8
 
-set showcmd " show input command.
+" Encoding Configuration
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
+set fileencoding=utf-8
 
+set showcmd " show input command.
 set clipboard=unnamedplus   " Allow copy to clipboard by y
 
-"Map keys
-nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
-nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
-nnoremap <F3> :Tlist<CR>                                          " Add Tlist switch.
-nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
+" File Configuration
 
 filetype plugin on " Turn on filetype plugin.
-
+filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
 
+" Map keys
+nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
+nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
+nnoremap <F3> :Tlist<CR>                                          " Add Tlist switch.
+autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown 
+nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
+nnoremap <F5> :call CompileRunGcc()<CR>
+
+map <C-A> ggVGY  " ctrl+a alias select all and copy.
+vmap <C-c> "+y   " ctrl+c copy when in selection mode.
+
+
+" Vim Plugins
+
+"Tlist Configuration
+let Tlist_Auto_Open = 1                 " Auto open Tlist.
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
+let Tlist_Sort_Type = "name"            " Sorted by name
+let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
+let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
+let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
+let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
+
+" Tlist Keys Mapping
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Add support for markdown files in tagbar.
+let g:tagbar_type_markdown = {
+ \ 'ctagstype': 'markdown',
+ \ 'ctagsbin' : '~/.vim/plugin/markdown2ctags-0.3.3/markdown2ctags.py',
+ \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+ \ 'kinds' : [
+ \ 's:sections',
+ \ 'i:images'
+ \ ],
+ \ 'sro' : '»',
+ \ 'kind2scope' : {
+ \ 's' : 'section',
+ \ },
+ \ 'sort': 0,
+ \ }
+
+
+" Function Lists
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!./%
+    endif
+endfunc
 
 func SetTitle()
     let authorName = 'BillCong'               " AuthorName used by created files
@@ -97,19 +168,3 @@ func SetTitle()
     autocmd BufNewFile * normal G
 endfunc
 
-" Vim Plugins
-
-"Tlist Configuration
-let Tlist_Auto_Open = 1                 " Auto open Tlist.
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
-let Tlist_Sort_Type = "name"            " Sorted by name
-let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
-let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
-let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
-let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
-
-" Tlist Keys Mapping
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
