@@ -2,14 +2,17 @@
 
 Bill's Vim is my own vimrc configuration.
 
+## Fast Start
+
 1. git clone https://github.com/ProgrammerBill/BillsVim.git
 2. Run setup.sh for setup Bill's vimrc and will restore original vimrc files.
 3. Add "export PATH=$PATH:[your directory]/BillsVim/tools" in .bashrc
 
-new Features:
+## Vim Plugins:
 
-- Add Vundle for Vim Plugin manager. [https://github.com/VundleVim/Vundle.vim#quick-start](https://github.com/VundleVim/Vundle.vim#quick-start)
-- Add TagBar for Markdown [https://github.com/preservim/tagbar](https://github.com/preservim/tagbar)
-- Add Cscope support.[http://cscope.sourceforge.net/](http://cscope.sourceforge.net/)
+- Add Vundle for Vim Plugin manager. [Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)
+- Add TagBar for Markdown [tagbar](https://github.com/preservim/tagbar)
+- Add Cscope support.[cscope](http://cscope.sourceforge.net/)
+- Add vim-markdown-toc for fast generating table of contents. [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
 
 Have fun with Vim!
