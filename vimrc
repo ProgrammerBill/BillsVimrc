@@ -10,6 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/tagbar'
+Plugin 'mzlogin/vim-markdown-toc'
 call vundle#end()            " required
 
 
