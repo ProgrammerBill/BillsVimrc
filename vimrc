@@ -62,7 +62,7 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
 nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
 nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
 nnoremap <F3> :Tlist<CR>                                          " Add Tlist switch.
-autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown 
+autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
 nnoremap <F5> :call CompileRunGcc()<CR>
 
@@ -89,13 +89,33 @@ nnoremap <C-l> <C-w>l
 
 " Cscope Keys Mapping
 nnoremap <buffer> <leader>cs :cscope find s <c-r>=expand('<cword>')<cr><cr> " find symbols references
-nnoremap <buffer> <leader>cg :cscope find g <c-r>=expand('<cword>')<cr><cr> " find definitions 
+nnoremap <buffer> <leader>cg :cscope find g <c-r>=expand('<cword>')<cr><cr> " find definitions
 nnoremap <buffer> <leader>cc :cscope find c <c-r>=expand('<cword>')<cr><cr> " find who calls this function
-nnoremap <buffer> <leader>ct :cscope find t <c-r>=expand('<cword>')<cr><cr> " find this text positions 
-nnoremap <buffer> <leader>ce :cscope find e <c-r>=expand('<cword>')<cr><cr> " use egrep to find text 
-nnoremap <buffer> <leader>cf :cscope find f <c-r>=expand('<cword>')<cr><cr> " find this file 
-nnoremap <buffer> <leader>ci :cscope find i <c-r>=expand('<cword>')<cr><cr> " search file that includes this file 
-nnoremap <buffer> <leader>cd :cscope find d <c-r>=expand('<cword>')<cr><cr> " search funcs that this func calls 
+nnoremap <buffer> <leader>ct :cscope find t <c-r>=expand('<cword>')<cr><cr> " find this text positions
+nnoremap <buffer> <leader>ce :cscope find e <c-r>=expand('<cword>')<cr><cr> " use egrep to find text
+nnoremap <buffer> <leader>cf :cscope find f <c-r>=expand('<cword>')<cr><cr> " find this file
+nnoremap <buffer> <leader>ci :cscope find i <c-r>=expand('<cword>')<cr><cr> " search file that includes this file
+nnoremap <buffer> <leader>cd :cscope find d <c-r>=expand('<cword>')<cr><cr> " search funcs that this func calls
+
+" cscope add cscope.out automatically
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set csverb
+    set cspc=3
+    "add any database in current dir
+    if filereadable("cscope.out")
+        cs add cscope.out
+    "else search cscope.out elsewhere
+    else
+       let cscope_file=findfile("cscope.out", ".;")
+       let cscope_pre=matchstr(cscope_file, ".*/")
+       if !empty(cscope_file) && filereadable(cscope_file)
+           exe "cs add" cscope_file cscope_pre
+       endif
+     endif
+endif
 
 " Add support for markdown files in tagbar.
 let g:tagbar_type_markdown = {
@@ -177,4 +197,3 @@ func SetTitle()
     endif
     autocmd BufNewFile * normal G
 endfunc
-
