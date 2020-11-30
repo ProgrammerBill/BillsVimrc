@@ -14,5 +14,6 @@ Bill's Vim is my own vimrc configuration.
 - Add TagBar for Markdown [tagbar](https://github.com/preservim/tagbar)
 - Add Cscope support.[cscope](http://cscope.sourceforge.net/)
 - Add vim-markdown-toc for fast generating table of contents. [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
+- Add star search for searching do no jumping to next line. [Visual Star Search](https://github.com/bronson/vim-visual-star-search)
 
 Have fun with Vim!
