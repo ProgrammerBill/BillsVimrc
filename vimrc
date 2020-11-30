@@ -66,6 +66,7 @@ nnoremap <F3> :Tlist<CR>                                          " Add Tlist sw
 autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
 nnoremap <F5> :call CompileRunGcc()<CR>
+nnoremap <F6> :call GetRidOfM() <CR>
 
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
@@ -197,4 +198,10 @@ func SetTitle()
         call append(line(".")+7, "")
     endif
     autocmd BufNewFile * normal G
+endfunc
+
+func GetRidOfM()
+    exec ":e ++ff=dos "
+    exec ":set ff=unix"
+    exec "w"
 endfunc
