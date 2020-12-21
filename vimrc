@@ -52,6 +52,10 @@ set fileencoding=utf-8
 set showcmd " show input command.
 set clipboard=unnamedplus   " Allow copy to clipboard by y
 
+" No Swap files
+set nowritebackup
+set noswapfile
+
 " File Configuration
 
 filetype plugin on " Turn on filetype plugin.
