@@ -63,6 +63,8 @@ filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
 
+highlight ColorColumn ctermbg=yellow
+
 " Map keys
 nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
 nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
@@ -71,6 +73,7 @@ autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar f
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
 nnoremap <F5> :call CompileRunGcc()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
+nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '81' : '')<CR>
 
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
