@@ -113,6 +113,7 @@ if has("cscope")
     set cst
     set csverb
     set cspc=3
+    set nocscopeverbose
     "add any database in current dir
     if filereadable("cscope.out")
         cs add cscope.out
