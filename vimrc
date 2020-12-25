@@ -144,6 +144,11 @@ let g:tagbar_type_markdown = {
  \ }
 
 
+autocmd BufReadPost * if exists("b:current_syntax") && b:current_syntax == "logcat"
+autocmd BufReadPost *     syn keyword myTags BatteryService StatsUtilsManager
+autocmd BufReadPost *     syn keyword myKeywords success
+autocmd BufReadPost * endif
+
 " Function Lists
 func! CompileRunGcc()
     exec "w"
