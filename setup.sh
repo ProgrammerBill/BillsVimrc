@@ -25,4 +25,7 @@ fi
 
 ln -s $BILLSVIMRC $VIMRC_PATH
 ln -s $BILLSVIM $VIM_PATH
+
+$BILLSVIM/tools/fzf/install
+
 echo "VIM setup finished"

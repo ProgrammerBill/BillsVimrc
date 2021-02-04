@@ -1,0 +1,15 @@
+#!/bin/bash
+path=$(fzf)
+path_length=${#path}
+if [ $path_length -gt 0 ];then
+	echo "relative path is "$path
+	echo "absolute path is "$(pwd)"/"$path
+    file_message=`file $path`
+    echo "$file_message"
+
+    if [[ $file_message == *"text"* ]]
+    then
+	    vim $path
+    fi
+	history -s "vim $path"
+fi 

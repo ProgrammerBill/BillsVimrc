@@ -16,5 +16,6 @@ Bill's Vim is my own vimrc configuration.
 - Add vim-markdown-toc for fast generating table of contents. [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
 - Add star search for searching do no jumping to next line. [Visual Star Search](https://github.com/bronson/vim-visual-star-search)
 - Add logcat highlight for Android logcat file. [gburca/vim-logcat](https://github.com/gburca/vim-logcat)
+- ADD FZF for fast searching [junegunn/fzf](https://github.com/junegunn/fzf)
 
 Have fun with Vim!
