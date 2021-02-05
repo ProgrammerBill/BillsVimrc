@@ -55,6 +55,7 @@ set clipboard=unnamedplus   " Allow copy to clipboard by y
 " No Swap files
 set nowritebackup
 set noswapfile
+set laststatus=2 " Always show file name in status bar
 
 " File Configuration
 
