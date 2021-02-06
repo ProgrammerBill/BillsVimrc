@@ -17,5 +17,6 @@ Bill's Vim is my own vimrc configuration.
 - Add star search for searching do no jumping to next line. [Visual Star Search](https://github.com/bronson/vim-visual-star-search)
 - Add logcat highlight for Android logcat file. [gburca/vim-logcat](https://github.com/gburca/vim-logcat)
 - ADD FZF for fast searching [junegunn/fzf](https://github.com/junegunn/fzf)
+- ADD 'cscope_macros.vim' for cscope keybindings.
 
 Have fun with Vim!
