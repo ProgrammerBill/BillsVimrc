@@ -28,4 +28,9 @@ ln -s $BILLSVIM $VIM_PATH
 
 $BILLSVIM/tools/fzf/install
 
+TMUX_RET=`sed -n 's/.*\(set-window-option -g mode-keys vi\).*/1/p' ~/.tmux.conf`
+if [ -z $TMUX_RET ];then
+    echo "set-window-option -g mode-keys vi" >> ~/.tmux.conf
+fi
+
 echo "VIM setup finished"
