@@ -57,6 +57,8 @@ set nowritebackup
 set noswapfile
 set laststatus=2 " Always show file name in status bar
 
+set nofoldenable " no fold
+
 " File Configuration
 
 filetype plugin on " Turn on filetype plugin.
