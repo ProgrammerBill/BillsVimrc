@@ -27,8 +27,6 @@ syntax on                  " Enable syntax highlighting.
 " Indent Configuration
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
-set softtabstop =4         " Tab key indents by 4 spaces.
-set shiftwidth  =4         " >> indents by 4 spaces.
 set shiftround             " >> indents to next multiple of 'shiftwidth'.
 
 set foldmethod=manual      " Manual Fold
@@ -65,6 +63,7 @@ filetype plugin on " Turn on filetype plugin.
 filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
+autocmd BufRead *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
 
 highlight ColorColumn ctermbg=yellow
 
@@ -98,17 +97,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" Cscope Keys Mapping
-" Use cscope_macros.vim's key bindings
-"nnoremap <buffer> <leader>cs :cscope find s <c-r>=expand('<cword>')<cr><cr> " find symbols references
-"nnoremap <buffer> <leader>cg :cscope find g <c-r>=expand('<cword>')<cr><cr> " find definitions
-"nnoremap <buffer> <leader>cc :cscope find c <c-r>=expand('<cword>')<cr><cr> " find who calls this function
-"nnoremap <buffer> <leader>ct :cscope find t <c-r>=expand('<cword>')<cr><cr> " find this text positions
-"nnoremap <buffer> <leader>ce :cscope find e <c-r>=expand('<cword>')<cr><cr> " use egrep to find text
-"nnoremap <buffer> <leader>cf :cscope find f <c-r>=expand('<cword>')<cr><cr> " find this file
-"nnoremap <buffer> <leader>ci :cscope find i <c-r>=expand('<cword>')<cr><cr> " search file that includes this file
-"nnoremap <buffer> <leader>cd :cscope find d <c-r>=expand('<cword>')<cr><cr> " search funcs that this func calls
 
 " cscope add cscope.out automatically
 if has("cscope")
@@ -167,6 +155,16 @@ func! CompileRunGcc()
         exec "!java %<"
     elseif &filetype == 'sh'
         :!./%
+    endif
+endfunc
+
+func SetParams()
+    if &filetype == 'cpp'
+        set softtabstop =2        " Tab key indents by 2 spaces.
+        set shiftwidth  =2        " >> indents by 2 spaces.
+    else
+        set softtabstop =4       " Tab key indents by 4 spaces.
+        set shiftwidth  =4       " >> indents by 4 spaces.
     endif
 endfunc
 
