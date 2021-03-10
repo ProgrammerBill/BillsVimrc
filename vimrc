@@ -63,7 +63,7 @@ filetype plugin on " Turn on filetype plugin.
 filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
-autocmd BufRead *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
+autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
 
 highlight ColorColumn ctermbg=yellow
 
