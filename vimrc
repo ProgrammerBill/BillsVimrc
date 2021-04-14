@@ -7,10 +7,12 @@
 "
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/tagbar'
 Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'junegunn/fzf.vim'
 call vundle#end()            " required
 
 
@@ -76,6 +78,7 @@ nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse
 nnoremap <F5> :call CompileRunGcc()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
 nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '81' : '')<CR>
+nnoremap <F8> :call SwitchTabSize() <CR>
 
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
@@ -136,6 +139,14 @@ let g:tagbar_type_markdown = {
  \ }
 
 
+" fzf with ripgrep
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
 autocmd BufReadPost * if exists("b:current_syntax") && b:current_syntax == "logcat"
 autocmd BufReadPost *     syn keyword myTags BatteryService StatsUtilsManager
 autocmd BufReadPost *     syn keyword myKeywords success
@@ -167,6 +178,18 @@ func SetParams()
         set shiftwidth  =4       " >> indents by 4 spaces.
     endif
 endfunc
+
+func SwitchTabSize()
+    if &softtabstop == 4 && &shiftwidth == 4
+        set softtabstop =2        " Tab key indents by 2 spaces.
+        set shiftwidth  =2        " >> indents by 2 spaces.
+    else
+        set softtabstop =4       " Tab key indents by 4 spaces.
+        set shiftwidth  =4       " >> indents by 4 spaces.
+    endif
+endfunc
+
+
 
 func SetTitle()
     let authorName = 'BillCong'               " AuthorName used by created files
