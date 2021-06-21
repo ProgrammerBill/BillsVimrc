@@ -64,8 +64,9 @@ set nofoldenable " no fold
 filetype plugin on " Turn on filetype plugin.
 filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetTitle()"
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
+autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
 
 highlight ColorColumn ctermbg=yellow
 
@@ -194,15 +195,13 @@ endfunc
 func SetTitle()
     let authorName = 'BillCong'               " AuthorName used by created files
     let mailAddress = 'cjcbill@gmail.com' " MailAddress used by created files
-    if &filetype == 'sh'
+    if &filetype == 'sh' || &filetype == 'python'
         call setline(1,          "\#########################################################################")
         call append(line("."),   "\# File Name: ".expand("%"))
         call append(line(".")+1, "\# Author: ".authorName)
         call append(line(".")+2, "\# mail: ".mailAddress)
         call append(line(".")+3, "\# Created Time: ".strftime("%c"))
         call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
     elseif &filetype == 'markdown'
         call setline(1,          "---")
         call append(line("."),   "title: ".expand("%"))
@@ -226,6 +225,11 @@ func SetTitle()
         call append(line(".")+4, " ************************************************************************/")
         call append(line(".")+5, "")
     endif
+
+    if &filetype == 'sh'
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+    endif
     if &filetype == 'cpp'
         call append(line(".")+6, "#include<iostream>")
         call append(line(".")+7, "using namespace std;")
@@ -234,6 +238,10 @@ func SetTitle()
     if &filetype == 'c'
         call append(line(".")+6, "#include<stdio.h>")
         call append(line(".")+7, "")
+    endif
+    if &filetype == 'python'
+        call append(line(".")+5, "#! /usr/bin/env python")
+        call append(line(".")+6, "# -*- coding: utf-8 -*-")
     endif
     autocmd BufNewFile * normal G
 endfunc
