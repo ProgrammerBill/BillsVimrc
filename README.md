@@ -1,13 +1,14 @@
 # Bill's Vim
 
+[chinese](README-ZH.md)
+
 Bill's Vim is my own vimrc configuration.
 
 ## Fast Start
 
 1. git clone https://github.com/ProgrammerBill/BillsVim.git
-2. cd BillsVim && git submodule update --init --recursive
-3. Run setup.sh for setup Bill's vimrc and will restore original vimrc files.
-4. Add "export PATH=$PATH:[your directory]/BillsVim/tools" in .bashrc
+2. Run setup.sh for setup Bill's vimrc and will restore original vimrc files.
+3. Add "export PATH=$PATH:[your directory]/BillsVim/tools" in .bashrc
 
 ## Vim Plugins:
 
@@ -21,5 +22,10 @@ Bill's Vim is my own vimrc configuration.
 - ADD fzf.vim for fast searching [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 - ADD 'cscope_macros.vim' for cscope keybindings.
 - ADD vim-autocomplpop for auto complete [vim-autocomplpop](https://github.com/othree/vim-autocomplpop)
+
+## tools
+
+- ff for fast locate files
+- cs for fast add ctags and cscope tags
 
 Have fun with Vim!
