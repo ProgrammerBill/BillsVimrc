@@ -25,3 +25,6 @@
 [submodule "plugin/markdown2ctags"]
 	path = plugin/markdown2ctags
 	url = git@github.com:jszakmeister/markdown2ctags.git
+[submodule "plugin/cscope_macros.vim"]
+	path = plugin/cscope_macros.vim
+	url = git@github.com:vim-scripts/cscope_macros.vim.git
