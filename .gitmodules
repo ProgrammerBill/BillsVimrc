@@ -16,3 +16,6 @@
 [submodule "bundle/vim-logcat"]
 	path = bundle/vim-logcat
 	url = git@github.com:gburca/vim-logcat.git
+[submodule "plugin/taglist.vim"]
+	path = plugin/taglist.vim
+	url = git@github.com:vim-scripts/taglist.vim.git
