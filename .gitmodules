@@ -13,3 +13,6 @@
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "bundle/vim-logcat"]
+	path = bundle/vim-logcat
+	url = git@github.com:gburca/vim-logcat.git

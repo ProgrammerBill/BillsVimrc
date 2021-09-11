@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/tagbar'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'junegunn/fzf.vim'
+Plugin 'gburca/vim-logcat'
 call vundle#end()            " required
 
 
