@@ -68,6 +68,7 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Ma
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
 autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
+autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
 
 highlight ColorColumn ctermbg=yellow
 
@@ -76,6 +77,7 @@ nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate sp
 nnoremap <F2> :set number! number?<cr>                            " Switch showing number line.
 nnoremap <F3> :Tlist<CR>                                          " Add Tlist switch.
 autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
+autocmd filetype go nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
 nnoremap <F5> :call CompileRunGcc()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
