@@ -22,3 +22,6 @@
 [submodule "plugin/starsearch.vim"]
 	path = plugin/starsearch.vim
 	url = git@github.com:darfink/starsearch.vim.git
+[submodule "plugin/markdown2ctags"]
+	path = plugin/markdown2ctags
+	url = git@github.com:jszakmeister/markdown2ctags.git
