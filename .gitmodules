@@ -1,3 +1,6 @@
 [submodule "tools/fzf"]
 	path = tools/fzf
 	url = git@github.com:junegunn/fzf.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git@github.com:preservim/tagbar.git

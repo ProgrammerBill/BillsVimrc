@@ -5,8 +5,9 @@ Bill's Vim is my own vimrc configuration.
 ## Fast Start
 
 1. git clone https://github.com/ProgrammerBill/BillsVim.git
-2. Run setup.sh for setup Bill's vimrc and will restore original vimrc files.
-3. Add "export PATH=$PATH:[your directory]/BillsVim/tools" in .bashrc
+2. cd BillsVim && git submodule update --init --recursive
+3. Run setup.sh for setup Bill's vimrc and will restore original vimrc files.
+4. Add "export PATH=$PATH:[your directory]/BillsVim/tools" in .bashrc
 
 ## Vim Plugins:
 
