@@ -19,3 +19,6 @@
 [submodule "plugin/taglist.vim"]
 	path = plugin/taglist.vim
 	url = git@github.com:vim-scripts/taglist.vim.git
+[submodule "plugin/starsearch.vim"]
+	path = plugin/starsearch.vim
+	url = git@github.com:darfink/starsearch.vim.git
