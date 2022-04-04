@@ -51,8 +51,12 @@ set fileencodings=ucs-bom,utf-8,cp936
 set fileencoding=utf-8
 
 set showcmd " show input command.
-set clipboard=unnamedplus   " Allow copy to clipboard by y
-set clipboard=unnamed " Allow copy to clipboard by y for mac
+
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed " Allow copy to clipboard by y for mac
+else
+  set clipboard=unnamedplus   " Allow copy to clipboard by y
+endif
 
 " No Swap files
 set nowritebackup
