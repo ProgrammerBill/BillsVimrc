@@ -52,6 +52,7 @@ set fileencoding=utf-8
 
 set showcmd " show input command.
 set clipboard=unnamedplus   " Allow copy to clipboard by y
+set clipboard=unnamed " Allow copy to clipboard by y for mac
 
 " No Swap files
 set nowritebackup
