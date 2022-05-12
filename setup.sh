@@ -57,5 +57,13 @@ if [ -z $TMUX_RET ];then
     echo "setw -g aggressive-resize on" >> ~/.tmux.conf
 fi
 
+OS=`uname -s`
+# install ctags
+if [ "$OS" = "Darwin" ];then
+    brew install ctags-exuberant
+else
+    sudo apt install ctags
+fi
+
 echo "VIM setup finished"
 set +x
