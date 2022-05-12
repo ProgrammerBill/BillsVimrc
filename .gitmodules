@@ -35,8 +35,8 @@
 	path = plugin/cscope_macros.vim
 	url = git@github.com:vim-scripts/cscope_macros.vim.git
 [submodule "bundle/vim-airline"]
-	path = plugin/vim-airline
+	path = bundle/vim-airline
 	url = git@github.com:vim-airline/vim-airline.git
 [submodule "bundle/vim-airline-themes"]
-	path = plugin/vim-airline-themes
+	path = bundle/vim-airline-themes
 	url = git@github.com:vim-airline/vim-airline-themes.git

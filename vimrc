@@ -251,6 +251,8 @@ endif
 "    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 "augroup END
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme="tomorrow"
 
 " Function Lists
 func! CompileRunGcc()
