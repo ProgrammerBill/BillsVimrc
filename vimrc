@@ -15,6 +15,7 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'junegunn/fzf.vim'
 Plugin 'gburca/vim-logcat'
 Plugin 'prabirshrestha/vim-lsp'
+Plugin 'liuchengxu/vim-clap'
 call vundle#end()            " required
 
 
