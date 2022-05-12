@@ -15,7 +15,7 @@
 	url = git@github.com:liuchengxu/vim-clap.git
 [submodule "bundle/vim-lsp"]
 	path = bundle/vim-lsp
-	url = git@github.com:prabirshrestha/vim-lsp.git 
+	url = git@github.com:prabirshrestha/vim-lsp.git
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
@@ -34,3 +34,9 @@
 [submodule "plugin/cscope_macros.vim"]
 	path = plugin/cscope_macros.vim
 	url = git@github.com:vim-scripts/cscope_macros.vim.git
+[submodule "bundle/vim-airline"]
+	path = plugin/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "bundle/vim-airline-themes"]
+	path = plugin/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git

@@ -10,6 +10,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/tagbar'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'junegunn/fzf.vim'
@@ -52,6 +54,21 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936
 set fileencoding=utf-8
 
+" Set leader key
+let mapleader=','
+
+" Normal mode is square, and Insert mode is vertial line.
+let &t_SI.="\e[6 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+
+highlight Cursor guifg=white guibg=white
+highlight iCursor guifg=white guibg=white
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+
 set showcmd " show input command.
 
 if system('uname -s') == "Darwin\n"
@@ -63,6 +80,7 @@ endif
 " No Swap files
 set nowritebackup
 set noswapfile
+set nobackup
 set laststatus=2 " Always show file name in status bar
 
 set nofoldenable " no fold
@@ -79,6 +97,9 @@ autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Mark
 autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
 
 highlight ColorColumn ctermbg=yellow
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
 
 " Map keys
 nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " Eliminate spaces after lines.
@@ -104,7 +125,8 @@ vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 
 "Tlist Configuration
 let Tlist_Auto_Open = 1                 " Auto open Tlist.
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
+"let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
 let Tlist_Sort_Type = "name"            " Sorted by name
 let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
 let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
@@ -118,25 +140,25 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " cscope add cscope.out automatically
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
-    set cst
-    set csverb
-    set cspc=3
-    set nocscopeverbose
-    "add any database in current dir
-    if filereadable("cscope.out")
-        cs add cscope.out
-    "else search cscope.out elsewhere
-    else
-       let cscope_file=findfile("cscope.out", ".;")
-       let cscope_pre=matchstr(cscope_file, ".*/")
-       if !empty(cscope_file) && filereadable(cscope_file)
-           exe "cs add" cscope_file cscope_pre
-       endif
-     endif
-endif
+"if has("cscope")
+"    set csprg=/usr/bin/cscope
+"    set csto=0
+"    set cst
+"    set csverb
+"    set cspc=3
+"    set nocscopeverbose
+"    "add any database in current dir
+"    if filereadable("cscope.out")
+"        cs add cscope.out
+"    "else search cscope.out elsewhere
+"    else
+"       let cscope_file=findfile("cscope.out", ".;")
+"       let cscope_pre=matchstr(cscope_file, ".*/")
+"       if !empty(cscope_file) && filereadable(cscope_file)
+"           exe "cs add" cscope_file cscope_pre
+"       endif
+"     endif
+"endif
 
 "if executable('cquery')
 "   au User lsp_setup call lsp#register_server({
@@ -178,6 +200,57 @@ autocmd BufReadPost * if exists("b:current_syntax") && b:current_syntax == "logc
 autocmd BufReadPost *     syn keyword myTags BatteryService StatsUtilsManager
 autocmd BufReadPost *     syn keyword myKeywords success
 autocmd BufReadPost * endif
+
+" vim-lsp
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+"if executable('clangd')
+"    " pip install python-language-server
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'clangd',
+"        \ 'cmd': {server_info->['clangd']},
+"        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+"        \ })
+"endif
+"
+"
+"function! s:on_lsp_buffer_enabled() abort
+"    setlocal omnifunc=lsp#complete
+"    setlocal signcolumn=yes
+"    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"    nmap <buffer> gd <plug>(lsp-definition)
+"    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+"    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+"    nmap <buffer> gr <plug>(lsp-references)
+"    nmap <buffer> gi <plug>(lsp-implementation)
+"    nmap <buffer> gt <plug>(lsp-type-definition)
+"    nmap <buffer> <leader>rn <plug>(lsp-rename)
+"    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+"    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+"    nmap <buffer> K <plug>(lsp-hover)
+"    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+"
+"    let g:lsp_format_sync_timeout = 1000
+"    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+"    
+"    " refer to doc to add more commands
+"endfunction
+"
+"augroup lsp_install
+"    au!
+"    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+"augroup END
+
 
 " Function Lists
 func! CompileRunGcc()

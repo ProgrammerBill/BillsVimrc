@@ -61,8 +61,10 @@ OS=`uname -s`
 # install ctags
 if [ "$OS" = "Darwin" ];then
     brew install ctags-exuberant
+    brew install Cscope
 else
     sudo apt install ctags
+    sudo apt install cscope
 fi
 
 echo "VIM setup finished"
