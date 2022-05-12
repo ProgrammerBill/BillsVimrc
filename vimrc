@@ -14,6 +14,7 @@ Plugin 'preservim/tagbar'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'junegunn/fzf.vim'
 Plugin 'gburca/vim-logcat'
+Plugin 'prabirshrestha/vim-lsp'
 call vundle#end()            " required
 
 
@@ -64,6 +65,7 @@ set noswapfile
 set laststatus=2 " Always show file name in status bar
 
 set nofoldenable " no fold
+set backspace=2  "compatible with version 5.4 and earlier
 
 " File Configuration
 
@@ -86,12 +88,16 @@ autocmd filetype go nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for Mar
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
 nnoremap <F5> :call CompileRunGcc()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
-nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '81' : '')<CR>
+nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '101' : '')<CR>
 nnoremap <F8> :call SwitchTabSize() <CR>
 
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 
+"nn <silent> <C-]> :LspDefinition<cr>
+"nn <silent> <C-[> :LspReferences<cr>
+"nn <silent> <M-=> :LspDocumentFormat<cr>
+"nn <f2> :LspRename<cr>
 
 " Vim Plugins
 
@@ -130,6 +136,17 @@ if has("cscope")
        endif
      endif
 endif
+
+"if executable('cquery')
+"   au User lsp_setup call lsp#register_server({
+"      \ 'name': 'cquery',
+"      \ 'cmd': {server_info->['cquery']},
+"      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+"      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"      \ })
+"endif
+
 
 " Add support for markdown files in tagbar.
 let g:tagbar_type_markdown = {
@@ -203,7 +220,7 @@ endfunc
 func SetTitle()
     let authorName = 'BillCong'               " AuthorName used by created files
     let mailAddress = 'cjcbill@gmail.com' " MailAddress used by created files
-    if &filetype == 'sh' || &filetype == 'python'
+    if &filetype == 'sh'
         call setline(1,          "\#########################################################################")
         call append(line("."),   "\# File Name: ".expand("%"))
         call append(line(".")+1, "\# Author: ".authorName)
