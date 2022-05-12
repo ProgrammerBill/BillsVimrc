@@ -10,6 +10,12 @@
 [submodule "bundle/vim-markdown-toc"]
 	path = bundle/vim-markdown-toc
 	url = git@github.com:mzlogin/vim-markdown-toc.git
+[submodule "bundle/vim-clap"]
+	path = bundle/vim-clap
+	url = git@github.com:liuchengxu/vim-clap.git
+[submodule "bundle/vim-lsp"]
+	path = bundle/vim-lsp
+	url = git@github.com:prabirshrestha/vim-lsp.git 
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
