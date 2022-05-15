@@ -203,15 +203,15 @@ autocmd BufReadPost * endif
 
 " vim-lsp
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
+"if executable('pyls')
+"    " pip install python-language-server
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pyls']},
+"        \ 'allowlist': ['python'],
+"        \ })
+"endif
+"
 "if executable('clangd')
 "    " pip install python-language-server
 "    au User lsp_setup call lsp#register_server({
@@ -236,12 +236,12 @@ endif
 "    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
 "    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
 "    nmap <buffer> K <plug>(lsp-hover)
-"    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-"    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+"    "nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"    "nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 "
 "    let g:lsp_format_sync_timeout = 1000
 "    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-"    
+"
 "    " refer to doc to add more commands
 "endfunction
 "
