@@ -251,8 +251,44 @@ autocmd BufReadPost * endif
 "    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 "augroup END
 
+" airline
+
+
+""-------------------------------------------------------------
+" AIRLINE
+" ------------------------------------------------------------
+" enable powerline fonts
+let g:airline_powerline_fonts = 1
+"let g:airline_theme="tomorrow"
+" enable tabline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme="tomorrow"
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" show tab number in tab line
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#vimtex#left = ""
+let g:airline#extensions#vimtex#right = ""
+"
+set laststatus=2 " Show the statusline
+set noshowmode " Hide the default mode text
+"  airline symbols dictionary
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+if has("gui_running")
+  set guifont=MesloLGSDZForPowerline-Regular:h16
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" vim-clap
+let g:clap_theme = 'material_design_dark'
 
 " Function Lists
 func! CompileRunGcc()
