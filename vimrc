@@ -113,6 +113,9 @@ nnoremap <F6> :call GetRidOfM() <CR>
 nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '101' : '')<CR>
 nnoremap <F8> :call SwitchTabSize() <CR>
 
+map ]b :bnext<CR>
+map [b :bprevious<CR>
+
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 
