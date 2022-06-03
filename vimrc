@@ -122,6 +122,12 @@ map [b :bprevious<CR>
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 nnoremap <C-e> :edit $MYVIMRC<CR>
+nnoremap <C-r> :source $MYVIMRC<CR>
+
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "nn <silent> <C-]> :LspDefinition<cr>
 "nn <silent> <C-[> :LspReferences<cr>
