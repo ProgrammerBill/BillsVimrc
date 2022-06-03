@@ -6,11 +6,11 @@
 #########################################################################
 #!/bin/bash
 set -x
-VIMRC_PATH=~/.vimrc
-VIM_PATH=~/.vim
+VIMRC_PATH=$HOME/.vimrc
+VIM_PATH=$HOME/.vim
 
-VIMRC_BACKUP_PATH=~/.vimrcbk
-VIM_BACKUP_PATH=~/.vimbk
+VIMRC_BACKUP_PATH=/tmp/
+VIM_BACKUP_PATH=/tmp/.vimbk
 
 BILLSVIM=$PWD
 BILLSVIMRC=$BILLSVIM/vimrc
@@ -19,6 +19,7 @@ BILLSVIMRC=$BILLSVIM/vimrc
 git submodule update --init --recursive
 
 # backup origin vim files.
+# check if the symbolic link exists
 if [ -h $VIMRC_PATH ];then
     rm $VIMRC_PATH
 elif [ -f $VIMRC_PATH ];then
@@ -32,10 +33,10 @@ elif [ -d $VIM_PATH ];then
 fi
 
 ln -s $BILLSVIM $VIM_PATH
-ln -s $VIM_PATH/vimrc $VIMRC_PATH
+ln -s $BILLSVIM/vimrc $VIMRC_PATH
 
 # install fzf
-$BILLSVIM/tools/fzf/install
+$BILLSVIM/bundle/fzf/install
 
 # update vim-logcat
 if [ -d $BILLSVIM/syntax ];then
@@ -47,24 +48,28 @@ ln -s $BILLSVIM/bundle/vim-logcat/syntax/logcat.vim $BILLSVIM/syntax/logcat.vim
 if [ -d $BILLSVIM/ftdetect ];then
     rm -rf $BILLSVIM/ftdetect
 fi
+
 mkdir $BILLSVIM/ftdetect
 ln -s $BILLSVIM/bundle/vim-logcat/ftdetect/logcat.vim $BILLSVIM/ftdetect/logcat.vim
-
-# configure tmux
-TMUX_RET=`sed -n 's/.*\(set-window-option -g mode-keys vi\).*/1/p' ~/.tmux.conf`
-if [ -z $TMUX_RET ];then
-    echo "set-window-option -g mode-keys vi" >> ~/.tmux.conf
-    echo "setw -g aggressive-resize on" >> ~/.tmux.conf
-fi
 
 OS=`uname -s`
 # install ctags
 if [ "$OS" = "Darwin" ];then
-    brew install ctags-exuberant
-    brew install Cscope
+    if ! [ -x "$(command -v ctags)" ]; then
+        brew install ctags-exuberant
+    fi
+
+    if ! [ -x "$(command -v cscope)" ]; then
+        brew install Cscope
+    fi
 else
-    sudo apt install ctags
-    sudo apt install cscope
+    if ! [ -x "$(command -v ctags)" ]; then
+        sudo apt install ctags
+    fi
+
+    if ! [ -x "$(command -v cscope)" ]; then
+        sudo apt install cscope
+    fi
 fi
 
 echo "VIM setup finished"
