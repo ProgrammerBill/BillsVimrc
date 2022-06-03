@@ -131,8 +131,13 @@ vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 
 "Tlist Configuration
 let Tlist_Auto_Open = 1                 " Auto open Tlist.
-"let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
+
+if system('uname -s') == "Darwin\n"
+  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
+else
+  let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
+endif
+
 let Tlist_Sort_Type = "name"            " Sorted by name
 let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
 let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
