@@ -8,12 +8,13 @@ if [ $path_length -gt 0 ];then
     echo "$file_message"
 
 
-    if [[ $file_message == *"HTML"* ]]
+    if [[ $file_message == *"text"* ]]
     then
-	    google-chrome-stable $path
-    elif [[ $file_message == *"text"* ]]
-    then
-	    vim $path
+            vim $path
             history -s "vim $path"
+    elif [[ $file_message == *"HTML"* ]]
+    then
+            google-chrome-stable $path
+
     fi
-fi 
+fi
