@@ -1,0 +1,18 @@
+{
+        "languageserver": {
+                "go": {
+                        "command": "gopls",
+                        "rootPatterns": ["go.mod"],
+                        "trace.server": "verbose",
+                        "filetypes": ["go"]
+                }
+       },
+       "colors.filetypes": ["*"],
+       "java.configuration.runtimes": [
+               {
+                       "name": "JavaSE-11",
+                       "path": "/Users/jiangwenwen/Workspace/AOSP/Android/prebuilts/jdk/jdk11/darwin-x86",
+               },
+       ]
+}
+

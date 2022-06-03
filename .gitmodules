@@ -1,5 +1,5 @@
-[submodule "tools/fzf"]
-	path = tools/fzf
+[submodule "bundle/fzf"]
+	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
@@ -43,3 +43,9 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = git@github.com:vim-airline/vim-airline.git
+[submodule "bundle/coc.nvim"]
+	path = bundle/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git
+[submodule "bundle/vim-android"]
+	path = bundle/vim-android
+	url = git@github.com:hsanson/vim-android.git
