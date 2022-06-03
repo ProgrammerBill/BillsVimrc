@@ -121,6 +121,7 @@ map [b :bprevious<CR>
 
 map <C-A> ggVGY  " ctrl+a alias select all and copy.
 vmap <C-c> "+y   " ctrl+c copy when in selection mode.
+nnoremap <C-e> :edit $MYVIMRC<CR>
 
 "nn <silent> <C-]> :LspDefinition<cr>
 "nn <silent> <C-[> :LspReferences<cr>
@@ -260,7 +261,11 @@ nnoremap <C-l> <C-w>l
 " ===================================== cscope ================================
 " cscope add cscope.out automatically
 if has("cscope")
-    set csprg=/usr/local/bin/cscope
+    if system('uname -s') == "Darwin\n"
+        set csprg=/usr/local/bin/cscope
+    else
+        set csprg=/usr/bin/cscope
+    endif
     set csto=0
     set cst
     set csverb
