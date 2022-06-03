@@ -127,181 +127,11 @@ vmap <C-c> "+y   " ctrl+c copy when in selection mode.
 "nn <silent> <M-=> :LspDocumentFormat<cr>
 "nn <f2> :LspRename<cr>
 
-" Vim Plugins
-
-"Tlist Configuration
-let Tlist_Auto_Open = 1                 " Auto open Tlist.
-
-if system('uname -s') == "Darwin\n"
-  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
-else
-  let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
-endif
-
-let Tlist_Sort_Type = "name"            " Sorted by name
-let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
-let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
-let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
-let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
-
-" Tlist Keys Mapping
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" cscope add cscope.out automatically
-"if has("cscope")
-"    set csprg=/usr/bin/cscope
-"    set csto=0
-"    set cst
-"    set csverb
-"    set cspc=3
-"    set nocscopeverbose
-"    "add any database in current dir
-"    if filereadable("cscope.out")
-"        cs add cscope.out
-"    "else search cscope.out elsewhere
-"    else
-"       let cscope_file=findfile("cscope.out", ".;")
-"       let cscope_pre=matchstr(cscope_file, ".*/")
-"       if !empty(cscope_file) && filereadable(cscope_file)
-"           exe "cs add" cscope_file cscope_pre
-"       endif
-"     endif
-"endif
-
-"if executable('cquery')
-"   au User lsp_setup call lsp#register_server({
-"      \ 'name': 'cquery',
-"      \ 'cmd': {server_info->['cquery']},
-"      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-"      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-"      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-"      \ })
-"endif
-
-
-" Add support for markdown files in tagbar.
-let g:tagbar_type_markdown = {
- \ 'ctagstype': 'markdown',
- \ 'ctagsbin' : '~/.vim/plugin/markdown2ctags/markdown2ctags.py',
- \ 'ctagsargs' : '-f - --sort=yes --sro=»',
- \ 'kinds' : [
- \ 's:sections',
- \ 'i:images'
- \ ],
- \ 'sro' : '»',
- \ 'kind2scope' : {
- \ 's' : 'section',
- \ },
- \ 'sort': 0,
- \ }
-
-
-" fzf with ripgrep
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-  \ -g "!{.git,node_modules,vendor}/*" '
-
-command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
-
-autocmd BufReadPost * if exists("b:current_syntax") && b:current_syntax == "logcat"
-autocmd BufReadPost *     syn keyword myTags BatteryService StatsUtilsManager
-autocmd BufReadPost *     syn keyword myKeywords success
-autocmd BufReadPost * endif
-
-" vim-lsp
-
-"if executable('pyls')
-"    " pip install python-language-server
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pyls',
-"        \ 'cmd': {server_info->['pyls']},
-"        \ 'allowlist': ['python'],
-"        \ })
-"endif
-"
-"if executable('clangd')
-"    " pip install python-language-server
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'clangd',
-"        \ 'cmd': {server_info->['clangd']},
-"        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
-"        \ })
-"endif
-"
-"
-"function! s:on_lsp_buffer_enabled() abort
-"    setlocal omnifunc=lsp#complete
-"    setlocal signcolumn=yes
-"    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-"    nmap <buffer> gd <plug>(lsp-definition)
-"    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-"    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-"    nmap <buffer> gr <plug>(lsp-references)
-"    nmap <buffer> gi <plug>(lsp-implementation)
-"    nmap <buffer> gt <plug>(lsp-type-definition)
-"    nmap <buffer> <leader>rn <plug>(lsp-rename)
-"    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-"    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-"    nmap <buffer> K <plug>(lsp-hover)
-"    "nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-"    "nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-"
-"    let g:lsp_format_sync_timeout = 1000
-"    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-"
-"    " refer to doc to add more commands
-"endfunction
-"
-"augroup lsp_install
-"    au!
-"    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-"    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-"augroup END
-
-" airline
-
-
-""-------------------------------------------------------------
-" AIRLINE
-" ------------------------------------------------------------
-" enable powerline fonts
-let g:airline_powerline_fonts = 1
-"let g:airline_theme="tomorrow"
-" enable tabline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" show tab number in tab line
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#vimtex#left = ""
-let g:airline#extensions#vimtex#right = ""
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-"
-set laststatus=2 " Show the statusline
-set noshowmode " Hide the default mode text
-"  airline symbols dictionary
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-if has("gui_running")
-  set guifont=MesloLGSDZForPowerline-Regular:h16
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-" vim-clap
-let g:clap_theme = 'material_design_dark'
+" Jump to last opened Cursor position.
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\ exe "normal! g`\"" |
+\ endif
 
 " Function Lists
 func! CompileRunGcc()
@@ -339,7 +169,6 @@ func SwitchTabSize()
         set shiftwidth  =4       " >> indents by 4 spaces.
     endif
 endfunc
-
 
 
 func SetTitle()
@@ -402,6 +231,202 @@ func GetRidOfM()
     exec "w"
 endfunc
 
+
+
+" Vim Plugins
+
+"Tlist Configuration
+" ===================================== Tlist ================================
+let Tlist_Auto_Open = 1                 " Auto open Tlist.
+
+if system('uname -s') == "Darwin\n"
+  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
+else
+  let Tlist_Ctags_Cmd = '/usr/bin/ctags'  " Set Ctag path.
+endif
+
+let Tlist_Sort_Type = "name"            " Sorted by name
+let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
+let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
+let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
+let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
+
+" Tlist Keys Mapping
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" ===================================== cscope ================================
+" cscope add cscope.out automatically
+if has("cscope")
+    set csprg=/usr/local/bin/cscope
+    set csto=0
+    set cst
+    set csverb
+    set cspc=3
+    set nocscopeverbose
+    "add any database in current dir
+    if filereadable("cscope.out")
+        cs add cscope.out
+    "else search cscope.out elsewhere
+    else
+       let cscope_file=findfile("cscope.out", ".;")
+       let cscope_pre=matchstr(cscope_file, ".*/")
+       if !empty(cscope_file) && filereadable(cscope_file)
+           exe "cs add" cscope_file cscope_pre
+       endif
+     endif
+endif
+
+"if executable('cquery')
+"   au User lsp_setup call lsp#register_server({
+"      \ 'name': 'cquery',
+"      \ 'cmd': {server_info->['cquery']},
+"      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+"      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"      \ })
+"endif
+
+
+" ===================================== tagbar ================================
+" Add support for markdown files in tagbar.
+let g:tagbar_type_markdown = {
+ \ 'ctagstype': 'markdown',
+ \ 'ctagsbin' : '~/.vim/plugin/markdown2ctags/markdown2ctags.py',
+ \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+ \ 'kinds' : [
+ \ 's:sections',
+ \ 'i:images'
+ \ ],
+ \ 'sro' : '»',
+ \ 'kind2scope' : {
+ \ 's' : 'section',
+ \ },
+ \ 'sort': 0,
+ \ }
+
+
+" ===================================== fzf ================================
+" fzf with ripgrep
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+autocmd BufReadPost * if exists("b:current_syntax") && b:current_syntax == "logcat"
+autocmd BufReadPost *     syn keyword myTags BatteryService StatsUtilsManager
+autocmd BufReadPost *     syn keyword myKeywords success
+autocmd BufReadPost * endif
+
+" ===================================== fzf.vim ================================
+let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+"let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+
+" vim-lsp
+" ===================================== vim-lsp ================================
+
+"if executable('pyls')
+"    " pip install python-language-server
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pyls']},
+"        \ 'allowlist': ['python'],
+"        \ })
+"endif
+"
+"if executable('clangd')
+"    " pip install python-language-server
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'clangd',
+"        \ 'cmd': {server_info->['clangd']},
+"        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+"        \ })
+"endif
+"
+"
+"function! s:on_lsp_buffer_enabled() abort
+"    setlocal omnifunc=lsp#complete
+"    setlocal signcolumn=yes
+"    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"    nmap <buffer> gd <plug>(lsp-definition)
+"    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+"    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+"    nmap <buffer> gr <plug>(lsp-references)
+"    nmap <buffer> gi <plug>(lsp-implementation)
+"    nmap <buffer> gt <plug>(lsp-type-definition)
+"    nmap <buffer> <leader>rn <plug>(lsp-rename)
+"    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+"    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+"    nmap <buffer> K <plug>(lsp-hover)
+"    "nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"    "nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+"
+"    let g:lsp_format_sync_timeout = 1000
+"    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+"
+"    " refer to doc to add more commands
+"endfunction
+"
+"augroup lsp_install
+"    au!
+"    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+"augroup END
+
+" ===================================== airline ================================
+" enable powerline fonts
+let g:airline_powerline_fonts = 1
+"let g:airline_theme="tomorrow"
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" show tab number in tab line
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#vimtex#left = ""
+let g:airline#extensions#vimtex#right = ""
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+"
+set laststatus=2 " Show the statusline
+set noshowmode " Hide the default mode text
+"  airline symbols dictionary
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+if has("gui_running")
+  set guifont=MesloLGSDZForPowerline-Regular:h16
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" ===================================== vim-clap ================================
+let g:clap_theme = 'material_design_dark'
+
+
+" ===================================== coc.nvim ================================
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -570,23 +595,10 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" coc.highlight
+" ===================================== coc.highlight ================================
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 let g:android_sdk_path="/Users/jiangwenwen/Workspace/AOSP/Android"
 
-" fzf.vim
-let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
-"let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
 
-" [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
-" [Commands] --expect expression for directly executing the command
-let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
