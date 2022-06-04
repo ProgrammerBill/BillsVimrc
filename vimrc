@@ -128,6 +128,11 @@ set cursorline
 hi CursorLine   cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
 hi CursorColumn cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+"Change Color when entering Insert Mode
+autocmd InsertEnter * set nocursorline
+"Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * set cursorline
+
 
 "nn <silent> <C-]> :LspDefinition<cr>
 "nn <silent> <C-[> :LspReferences<cr>
@@ -289,17 +294,6 @@ if has("cscope")
        endif
      endif
 endif
-
-"if executable('cquery')
-"   au User lsp_setup call lsp#register_server({
-"      \ 'name': 'cquery',
-"      \ 'cmd': {server_info->['cquery']},
-"      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-"      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-"      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-"      \ })
-"endif
-
 
 " ===================================== tagbar ================================
 " Add support for markdown files in tagbar.
