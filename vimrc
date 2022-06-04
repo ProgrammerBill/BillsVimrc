@@ -94,10 +94,10 @@ set backspace=2  "compatible with version 5.4 and earlier
 filetype plugin on " Turn on filetype plugin.
 filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
 autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
 autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 
 highlight ColorColumn ctermbg=yellow
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -111,7 +111,7 @@ nnoremap <F3> :Tlist<CR>                                          " Add Tlist sw
 autocmd filetype markdown nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
 autocmd filetype go nnoremap <F3> :TagbarToggle<CR>         " Add Tagbar for MarkDown
 nnoremap <F4> :let &mouse=(empty(&mouse) ? 'a' : '')<CR>          " Switch Mouse mode.
-nnoremap <F5> :call CompileRunGcc()<CR>
+nnoremap <F5> :call CompileRun()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
 nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '101' : '')<CR>
 nnoremap <F8> :call SwitchTabSize() <CR>
@@ -146,10 +146,10 @@ autocmd BufReadPost *
 \ endif
 
 " Function Lists
-func! CompileRunGcc()
+func! CompileRun()
     exec "w"
     if &filetype == 'c'
-        exec "!g++ % -o %<"
+        exec "!gcc % -o %<"
         exec "! ./%<"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
@@ -157,6 +157,8 @@ func! CompileRunGcc()
     elseif &filetype == 'java'
         exec "!javac %"
         exec "!java %<"
+    elseif &filetype == 'python'
+        exec "!python %"
     elseif &filetype == 'sh'
         :!./%
     endif
@@ -186,24 +188,24 @@ endfunc
 func SetTitle()
     let authorName = 'BillCong'               " AuthorName used by created files
     let mailAddress = 'cjcbill@gmail.com' " MailAddress used by created files
-    if &filetype == 'sh'
+    if &filetype == 'sh' || &filetype == 'python'
         call setline(1,          "\#########################################################################")
         call append(line("."),   "\# File Name: ".expand("%"))
         call append(line(".")+1, "\# Author: ".authorName)
         call append(line(".")+2, "\# mail: ".mailAddress)
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+3, "\# Created Time: ".strftime("%Y.%m.%d"))
         call append(line(".")+4, "\#########################################################################")
     elseif &filetype == 'markdown'
         call setline(1,          "---")
         call append(line("."),   "title: ".expand("%"))
-        call append(line(".")+1, "subtitle: ")
+        call append(line(".")+1, "subtitle:")
         call append(line(".")+2, "author: ".authorName)
         call append(line(".")+3, "mail: ".mailAddress)
         call append(line(".")+4, "changelog:")
         call append(line(".")+5, "- ver: 1.0")
         call append(line(".")+6, "  date: ".strftime("%Y.%m.%d"))
         call append(line(".")+7, "  author:")
-        call append(line(".")+8, "  desc: ")
+        call append(line(".")+8, "  desc:")
         call append(line(".")+9, "")
         call append(line(".")+10, "---")
         call append(line(".")+11, "")
@@ -212,7 +214,7 @@ func SetTitle()
         call append(line("."),   "    > File Name: ".expand("%"))
         call append(line(".")+1, "    > Author: ".authorName)
         call append(line(".")+2, "    > Mail: ".mailAddress)
-        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+        call append(line(".")+3, "    > Created Time: ".strftime("%Y.%m.%d"))
         call append(line(".")+4, " ************************************************************************/")
         call append(line(".")+5, "")
     endif
@@ -220,20 +222,38 @@ func SetTitle()
     if &filetype == 'sh'
         call append(line(".")+5, "\#!/bin/bash")
         call append(line(".")+6, "")
-    endif
-    if &filetype == 'cpp'
+        call append(line(".")+7, "echo \"Hello World\"")
+    elseif &filetype == 'cpp'
         call append(line(".")+6, "#include<iostream>")
         call append(line(".")+7, "using namespace std;")
         call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
+        call append(line(".")+9, "int main() \{")
+        call append(line(".")+10, "   cout<<\"Hello World\"<<endl;")
+        call append(line(".")+11, "   return 0;")
+        call append(line(".")+12, "\}")
+    elseif &filetype == 'c'
         call append(line(".")+6, "#include<stdio.h>")
         call append(line(".")+7, "")
-    endif
-    if &filetype == 'python'
+        call append(line(".")+8, "int main() \{")
+        call append(line(".")+9, "   printf(\"Hello World\\n\");")
+        call append(line(".")+10, "   return 0;")
+        call append(line(".")+11, "\}")
+    elseif &filetype == 'python'
         call append(line(".")+5, "#! /usr/bin/env python")
         call append(line(".")+6, "# -*- coding: utf-8 -*-")
+        call append(line(".")+7, "def main():")
+        call append(line(".")+8, '    print("Hello World!")')
+        call append(line(".")+9, "")
+        call append(line(".")+10,'if __name__ == "__main__":')
+        call append(line(".")+11,"    main()")
+    elseif &filetype == 'java'
+        call append(line(".")+5,'public class '.expand("%<").' {')
+        call append(line(".")+6,"    public static void main(String[] args) {")
+        call append(line(".")+7,"        System.out.println(\"Hello World\");")
+        call append(line(".")+8,"    }")
+        call append(line(".")+9,"}")
     endif
+
     autocmd BufNewFile * normal G
 endfunc
 
