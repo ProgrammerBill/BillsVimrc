@@ -125,8 +125,8 @@ nnoremap <C-e> :edit $MYVIMRC<CR>
 nnoremap <C-r> :source $MYVIMRC<CR>
 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorLine   cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
+hi CursorColumn cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "nn <silent> <C-]> :LspDefinition<cr>
@@ -610,6 +610,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 let g:android_sdk_path="/Users/jiangwenwen/Workspace/AOSP/Android"
-
-
-
