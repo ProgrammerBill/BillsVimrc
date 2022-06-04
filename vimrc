@@ -125,8 +125,8 @@ nnoremap <C-e> :edit $MYVIMRC<CR>
 nnoremap <C-r> :source $MYVIMRC<CR>
 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
-hi CursorColumn cterm=NONE ctermbg=68 ctermfg=white guibg=blue guifg=white
+hi CursorLine   cterm=NONE ctermbg=240 ctermfg=255 guibg=blue guifg=white
+hi CursorColumn cterm=NONE ctermbg=240 ctermfg=255 guibg=blue guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 "Change Color when entering Insert Mode
 autocmd InsertEnter * set nocursorline
@@ -404,7 +404,6 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 " show tab number in tab line
 let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#vimtex#left = ""
 let g:airline#extensions#vimtex#right = ""
 let g:airline#extensions#tabline#formatter = 'unique_tail'
