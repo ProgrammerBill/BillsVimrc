@@ -94,10 +94,10 @@ set backspace=2  "compatible with version 5.4 and earlier
 filetype plugin on " Turn on filetype plugin.
 filetype indent on " Trun on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
-autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md, exec ":call SetParams()"
+autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetParams()"
 autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
 autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py,*.go exec ":call SetTitle()"
 
 highlight ColorColumn ctermbg=yellow
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -161,6 +161,8 @@ func! CompileRun()
         exec "!python %"
     elseif &filetype == 'sh'
         :!./%
+    elseif &filetype == 'go'
+        exec "!go run %"
     endif
 endfunc
 
@@ -252,8 +254,15 @@ func SetTitle()
         call append(line(".")+7,"        System.out.println(\"Hello World\");")
         call append(line(".")+8,"    }")
         call append(line(".")+9,"}")
+    elseif &filetype == 'go'
+        call append(line(".")+5,'package main')
+        call append(line(".")+6,'import (')
+        call append(line(".")+7,'    "fmt"')
+        call append(line(".")+8,')')
+        call append(line(".")+9,'func main() {')
+        call append(line(".")+10,'    fmt.Println("Hello World")')
+        call append(line(".")+11,'}')
     endif
-
     autocmd BufNewFile * normal G
 endfunc
 
