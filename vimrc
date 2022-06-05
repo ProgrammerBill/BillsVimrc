@@ -21,6 +21,7 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'liuchengxu/vim-clap'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'hsanson/vim-android'
+Plugin 'fatih/vim-go'
 call vundle#end()            " required
 
 
@@ -97,7 +98,7 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Ma
 autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetParams()"
 autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
 autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py,*.go exec ":call SetTitle()"
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 
 highlight ColorColumn ctermbg=yellow
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -254,15 +255,6 @@ func SetTitle()
         call append(line(".")+7,"        System.out.println(\"Hello World\");")
         call append(line(".")+8,"    }")
         call append(line(".")+9,"}")
-    elseif &filetype == 'go'
-        call append(line(".")+5,'package main')
-        call append(line(".")+6,'import (')
-        call append(line(".")+7,'    "fmt"')
-        call append(line(".")+8,')')
-        call append(line(".")+9,'func main() {')
-        call append(line(".")+10,'    fmt.Println("Hello World")')
-        call append(line(".")+11,'}')
-    endif
     autocmd BufNewFile * normal G
 endfunc
 
