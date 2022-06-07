@@ -21,7 +21,7 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'liuchengxu/vim-clap'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'hsanson/vim-android'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 call vundle#end()            " required
 
 
@@ -31,7 +31,6 @@ set shortmess=atI " Do not show Messages before startup.
 
 set nocompatible " Use Vim's configuration not Vi.
 
-autocmd InsertEnter * se cul    " Set underline when in insert mode.
 
 syntax on                  " Enable syntax highlighting.
 
@@ -93,11 +92,12 @@ set backspace=2  "compatible with version 5.4 and earlier
 " File Configuration
 
 filetype plugin on " Turn on filetype plugin.
-filetype indent on " Trun on filetype indent.
+filetype indent on " Turn on filetype indent.
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " .md is Markdown file
-autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetParams()"
 autocmd BufNewFile,BufFilePre,BufRead *.py set filetype=python     " .py is Markdown file
 autocmd BufNewFile,BufFilePre,BufRead *.go set filetype=go     " .go is go file
+autocmd BufNewFile,BufFilePre,BufRead *.bp set filetype=bp     " .bp is Android.bp file
+autocmd BufRead,BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetParams()"
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.md,*.py exec ":call SetTitle()"
 
 highlight ColorColumn ctermbg=yellow
@@ -116,6 +116,7 @@ nnoremap <F5> :call CompileRun()<CR>
 nnoremap <F6> :call GetRidOfM() <CR>
 nnoremap <F7> :let &colorcolumn=(empty(&colorcolumn) ? '101' : '')<CR>
 nnoremap <F8> :call SwitchTabSize() <CR>
+
 
 map ]b :bnext<CR>
 map [b :bprevious<CR>
@@ -255,6 +256,7 @@ func SetTitle()
         call append(line(".")+7,"        System.out.println(\"Hello World\");")
         call append(line(".")+8,"    }")
         call append(line(".")+9,"}")
+    endif
     autocmd BufNewFile * normal G
 endfunc
 
@@ -264,13 +266,13 @@ func GetRidOfM()
     exec "w"
 endfunc
 
-
-
 " Vim Plugins
 
 "Tlist Configuration
 " ===================================== Tlist ================================
-let Tlist_Auto_Open = 1                 " Auto open Tlist.
+autocmd FileType go,markdown TagbarOpen
+autocmd FileType java,c,cpp,bp,python TlistOpen
+"let Tlist_Auto_Open = 1                 " Auto open Tlist.
 
 if system('uname -s') == "Darwin\n"
   let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'  " Set Ctag path.
@@ -283,6 +285,8 @@ let Tlist_Use_Right_Window = 1          " Showing Tlist in Right Side.
 let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
 let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
 let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
+let Tlist_Auto_Update = 1
+
 
 " Tlist Keys Mapping
 nnoremap <C-h> <C-w>h
