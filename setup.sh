@@ -8,6 +8,7 @@
 set -x
 VIMRC_PATH=$HOME/.vimrc
 VIM_PATH=$HOME/.vim
+CTAGS_PATH=$HOME/.ctags
 
 VIMRC_BACKUP_PATH=/tmp/
 VIM_BACKUP_PATH=/tmp/.vimbk
@@ -34,6 +35,11 @@ fi
 
 ln -s $BILLSVIM $VIM_PATH
 ln -s $BILLSVIM/vimrc $VIMRC_PATH
+
+if [ -h $CTAGS_PATH ];then
+    rm $CTAGS_PATH
+fi
+ln -s $BILLSVIM/ctags $CTAGS_PATH
 
 # install fzf
 $BILLSVIM/bundle/fzf/install

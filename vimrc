@@ -21,7 +21,7 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'liuchengxu/vim-clap'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'hsanson/vim-android'
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 call vundle#end()            " required
 
 
@@ -286,7 +286,6 @@ let Tlist_Inc_Winwidth = 0              " Do not increse Tlist Window width.
 let Tlist_Enable_Fold_Column = 0        " Do not show fold tree.
 let Tlist_Exit_OnlyWindow = 1           " Quit Tlist if window exits.
 let Tlist_Auto_Update = 1
-
 
 " Tlist Keys Mapping
 nnoremap <C-h> <C-w>h
