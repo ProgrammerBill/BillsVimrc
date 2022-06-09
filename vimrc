@@ -270,8 +270,8 @@ endfunc
 
 "Tlist Configuration
 " ===================================== Tlist ================================
-autocmd FileType go,markdown TagbarOpen
-autocmd FileType java,c,cpp,bp,python TlistOpen
+autocmd FileType go,markdown,cpp TagbarOpen
+autocmd FileType java,c,bp,python TlistOpen
 "let Tlist_Auto_Open = 1                 " Auto open Tlist.
 
 if system('uname -s') == "Darwin\n"
@@ -431,6 +431,10 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#vimtex#left = ""
 let g:airline#extensions#vimtex#right = ""
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_idx_mode = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#ignore_bufadd_pat =
+            \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
 
 "
 set laststatus=2 " Show the statusline
