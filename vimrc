@@ -6,26 +6,44 @@
 "                              |___/
 "
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'preservim/tagbar'
-Plugin 'mzlogin/vim-markdown-toc'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
-Plugin 'gburca/vim-logcat'
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'liuchengxu/vim-clap'
-"Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'hsanson/vim-android'
-Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular' | Plugin 'preservim/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-call vundle#end()            " required
+"set rtp+=~/.vim/bundle/Vundle.vim
+"set rtp+=~/.fzf
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'preservim/tagbar'
+"Plugin 'mzlogin/vim-markdown-toc'
+"Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plugin 'junegunn/fzf.vim'
+"Plugin 'gburca/vim-logcat'
+"Plugin 'prabirshrestha/vim-lsp'
+"Plugin 'liuchengxu/vim-clap'
+""Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+"Plugin 'hsanson/vim-android'
+"Plugin 'fatih/vim-go'
+"Plugin 'godlygeek/tabular' | Plugin 'preservim/vim-markdown'
+"Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+"call vundle#end()            " required
 
+
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/tagbar'
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'gburca/vim-logcat'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'liuchengxu/vim-clap'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hsanson/vim-android'
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+call plug#end()
 
 set nu " Show line numbers.
 
