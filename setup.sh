@@ -42,21 +42,21 @@ fi
 ln -s $BILLSVIM/ctags $CTAGS_PATH
 
 # install fzf
-$BILLSVIM/bundle/fzf/install
+$BILLSVIM/plugged/fzf/install
 
 # update vim-logcat
 if [ -d $BILLSVIM/syntax ];then
     rm -rf $BILLSVIM/syntax
 fi
 mkdir $BILLSVIM/syntax
-ln -s $BILLSVIM/bundle/vim-logcat/syntax/logcat.vim $BILLSVIM/syntax/logcat.vim
+ln -s $BILLSVIM/plugged/vim-logcat/syntax/logcat.vim $BILLSVIM/syntax/logcat.vim
 
 if [ -d $BILLSVIM/ftdetect ];then
     rm -rf $BILLSVIM/ftdetect
 fi
 
 mkdir $BILLSVIM/ftdetect
-ln -s $BILLSVIM/bundle/vim-logcat/ftdetect/logcat.vim $BILLSVIM/ftdetect/logcat.vim
+ln -s $BILLSVIM/plugged/vim-logcat/ftdetect/logcat.vim $BILLSVIM/ftdetect/logcat.vim
 
 OS=`uname -s`
 # install ctags

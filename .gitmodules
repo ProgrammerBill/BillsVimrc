@@ -1,0 +1,45 @@
+[submodule "plugged/fzf"]
+	path = plugged/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "plugged/coc.nvim"]
+	path = plugged/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+[submodule "plugged/fzf.vim"]
+	path = plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "plugged/markdown-preview.nvim"]
+	path = plugged/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim
+[submodule "plugged/tabular"]
+	path = plugged/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "plugged/tagbar"]
+	path = plugged/tagbar
+	url = https://github.com/preservim/tagbar
+[submodule "plugged/vim-airline"]
+	path = plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "plugged/vim-airline-themes"]
+	path = plugged/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "plugged/vim-android"]
+	path = plugged/vim-android
+	url = https://github.com/hsanson/vim-android
+[submodule "plugged/vim-clap"]
+	path = plugged/vim-clap
+	url = https://github.com/liuchengxu/vim-clap
+[submodule "plugged/vim-go"]
+	path = plugged/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "plugged/vim-logcat"]
+	path = plugged/vim-logcat
+	url = https://github.com/thinca/vim-logcat
+[submodule "plugged/vim-lsp"]
+	path = plugged/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "plugged/vim-markdown"]
+	path = plugged/vim-markdown
+	url = https://github.com/preservim/vim-markdown
+[submodule "plugged/vim-markdown-toc"]
+	path = plugged/vim-markdown-toc
+	url = https://github.com/mzlogin/vim-markdown-toc

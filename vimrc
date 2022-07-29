@@ -5,30 +5,8 @@
 "|____/|_|_|_|\____\___/|_| |_|\__, | |___/    \_/  |_|_| |_| |_|
 "                              |___/
 "
-" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"set rtp+=~/.fzf
-"call vundle#begin()
-"Plugin 'VundleVim/Vundle.vim'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'preservim/tagbar'
-"Plugin 'mzlogin/vim-markdown-toc'
-"Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plugin 'junegunn/fzf.vim'
-"Plugin 'gburca/vim-logcat'
-"Plugin 'prabirshrestha/vim-lsp'
-"Plugin 'liuchengxu/vim-clap'
-""Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-"Plugin 'hsanson/vim-android'
-"Plugin 'fatih/vim-go'
-"Plugin 'godlygeek/tabular' | Plugin 'preservim/vim-markdown'
-"Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-"call vundle#end()            " required
-
 
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/tagbar'
