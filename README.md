@@ -33,6 +33,7 @@ Bill's Vim is my own vimrc configuration.
 - Add 'cscope_macros.vim' for cscope keybindings.
 - Add vim-autocomplpop for auto complete [vim-autocomplpop](https://github.com/othree/vim-autocomplpop)
 - Add ultisnips for fast generate codes[ultisnips](https://github.com/SirVer/ultisnips)
+- Add vim-clang-format for formatting c codes while using vim. [vim-clang-format](https://github.com/rhysd/vim-clang-format)
 
 ## tools
 
