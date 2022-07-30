@@ -1,5 +1,14 @@
 # Bill's Vim
 
+```
+ ____  _ _ _  ____                  _      __     ___
+| __ )(_) | |/ ___|___  _ __   __ _( )___  \ \   / (_)_ __ ___
+|  _ \| | | | |   / _ \| '_ \ / _` |// __|  \ \ / /| | '_ ` _ \
+| |_) | | | | |__| (_) | | | | (_| | \__ \   \ V / | | | | | | |
+|____/|_|_|_|\____\___/|_| |_|\__, | |___/    \_/  |_|_| |_| |_|
+                              |___/
+```
+
 [chinese](README-ZH.md)
 
 Bill's Vim is my own vimrc configuration.
@@ -12,7 +21,8 @@ Bill's Vim is my own vimrc configuration.
 
 ## Vim Plugins:
 
-- Add Vundle for Vim Plugin manager. [Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)
+- ~~~Add Vundle for Vim Plugin manager. [Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)~~~
+- Use Vim-Plug for Vim Plugin manager which supports faster startup and lazy load. [Vim-Plug](https://github.com/junegunn/vim-plug)
 - Add TagBar for Markdown [tagbar](https://github.com/preservim/tagbar)
 - Add Cscope support.[cscope](http://cscope.sourceforge.net/)
 - Add vim-markdown-toc for fast generating table of contents. [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)

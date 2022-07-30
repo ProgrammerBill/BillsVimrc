@@ -43,3 +43,6 @@
 [submodule "plugged/vim-markdown-toc"]
 	path = plugged/vim-markdown-toc
 	url = https://github.com/mzlogin/vim-markdown-toc
+[submodule "plugged/markdown2ctags"]
+	path = plugged/markdown2ctags
+	url = https://github.com/jszakmeister/markdown2ctags

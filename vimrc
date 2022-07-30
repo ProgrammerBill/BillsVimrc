@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/tagbar'
-Plug 'mzlogin/vim-markdown-toc'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'gburca/vim-logcat'
@@ -19,8 +18,10 @@ Plug 'liuchengxu/vim-clap'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hsanson/vim-android'
 Plug 'fatih/vim-go'
-Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'jszakmeister/markdown2ctags', { 'for': 'markdown' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
+Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown', { 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
 call plug#end()
 
 set nu " Show line numbers.
@@ -323,7 +324,7 @@ endif
 " Add support for markdown files in tagbar.
 let g:tagbar_type_markdown = {
  \ 'ctagstype': 'markdown',
- \ 'ctagsbin' : '~/.vim/plugin/markdown2ctags/markdown2ctags.py',
+ \ 'ctagsbin' : '~/.vim/plugged/markdown2ctags/markdown2ctags.py',
  \ 'ctagsargs' : '-f - --sort=yes --sro=»',
  \ 'kinds' : [
  \ 's:sections',
