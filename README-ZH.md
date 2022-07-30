@@ -32,6 +32,7 @@ Bill's Vim是我个人的vim配置, 目的是能够快速布置环境。
 - fzf.vim是vim中fzf的插件 [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 - `cscope_macros`用于cscope的快捷键设置
 - vim-autocomplpop用于快速补齐[vim-autocomplpop](https://github.com/othree/vim-autocomplpop)
+- ultisnips for fast generate codes[ultisnips](https://github.com/SirVer/ultisnips)
 
 ## 工具
 

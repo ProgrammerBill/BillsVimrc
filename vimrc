@@ -9,6 +9,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/taglist.vim'
 Plug 'preservim/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -22,6 +23,8 @@ Plug 'jszakmeister/markdown2ctags', { 'for': 'markdown' }
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 set nu " Show line numbers.
@@ -30,6 +33,7 @@ set shortmess=atI " Do not show Messages before startup.
 
 set nocompatible " Use Vim's configuration not Vi.
 
+set modifiable
 
 syntax on                  " Enable syntax highlighting.
 
@@ -735,3 +739,14 @@ let g:mkdp_filetypes = ['markdown']
 let g:mkdp_theme = 'dark'
 
 "let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
+
+" ===================================== ultisnips ================================
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

@@ -46,3 +46,12 @@
 [submodule "plugged/markdown2ctags"]
 	path = plugged/markdown2ctags
 	url = https://github.com/jszakmeister/markdown2ctags
+[submodule "plugged/taglist.vim"]
+	path = plugged/taglist.vim
+	url = https://github.com/vim-scripts/taglist.vim
+[submodule "plugged/ultisnips"]
+	path = plugged/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "plugged/vim-snippets"]
+	path = plugged/vim-snippets
+	url = https://github.com/honza/vim-snippets
