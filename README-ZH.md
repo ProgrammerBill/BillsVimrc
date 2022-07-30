@@ -21,7 +21,7 @@ Bill's Vim是我个人的vim配置, 目的是能够快速布置环境。
 
 ## Vim插件:
 
-- ~~~Vundle用于安装vim插件[Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)~~~
+- ~~Vundle用于安装vim插件[Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)~~
 - vim-plug用于安装vim插件,支持快速启动以及必要时加载功能[vim-plug](https://github.com/junegunn/vim-plug)
 - TagBar用于显示MarkDown的标题[tagbar](https://github.com/preservim/tagbar)
 - Cscope用于支持函数查找[cscope](http://cscope.sourceforge.net/)

@@ -21,7 +21,7 @@ Bill's Vim is my own vimrc configuration.
 
 ## Vim Plugins:
 
-- ~~~Add Vundle for Vim Plugin manager. [Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)~~~
+- ~~Add Vundle for Vim Plugin manager. [Vundle](https://github.com/VundleVim/Vundle.vim#quick-start)~~
 - Use Vim-Plug for Vim Plugin manager which supports faster startup and lazy load. [Vim-Plug](https://github.com/junegunn/vim-plug)
 - Add TagBar for Markdown [tagbar](https://github.com/preservim/tagbar)
 - Add Cscope support.[cscope](http://cscope.sourceforge.net/)
