@@ -55,3 +55,6 @@
 [submodule "plugged/vim-snippets"]
 	path = plugged/vim-snippets
 	url = https://github.com/honza/vim-snippets
+[submodule "plugged/vim-clang-format"]
+	path = plugged/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format
