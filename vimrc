@@ -29,6 +29,7 @@ Plug 'rhysd/vim-clang-format', { 'for': 'cpp,[*].ch' }
 Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim' | Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 set nu " Show line numbers.

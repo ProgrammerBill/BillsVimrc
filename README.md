@@ -36,6 +36,7 @@ Bill's Vim is my own vimrc configuration.
 - Add vim-clang-format for formatting c codes while using vim. [vim-clang-format](https://github.com/rhysd/vim-clang-format)
 - Add vim-startify for fast open recent files[vim-startify](https://github.com/mhinz/vim-startify)
 - Add vim-easymotion and incsearch for fast location [vim-easymotion](https://github.com/easymotion/vim-easymotion) [incsearch](https://github.com/haya14busa/incsearch.vim) [incsearch-easymotion](https://github.com/haya14busa/incsearch-easymotion.vim) [incsearch-fuzzy](https://github.com/haya14busa/incsearch-fuzzy.vim)
+- Add vim-fugitive for using git in vim (plugged/vim-fugitive)[https://github.com/tpope/vim-fugitive]
 
 ## tools
 
