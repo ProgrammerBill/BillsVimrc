@@ -34,6 +34,8 @@ Bill's Vim是我个人的vim配置, 目的是能够快速布置环境。
 - vim-autocomplpop用于快速补齐[vim-autocomplpop](https://github.com/othree/vim-autocomplpop)
 - ultisnips能够快速生成代码片段[ultisnips](https://github.com/SirVer/ultisnips)
 - vim-clang-format用于写代码时能够对代码片段进行整理 [vim-clang-format](https://github.com/rhysd/vim-clang-format)
+- vim-startify能够显示最近打开过的文件 [vim-startify](https://github.com/mhinz/vim-startify)
+- vim-easymotio以及incsearch用于快速在当前文档内跳转 [vim-easymotion](https://github.com/easymotion/vim-easymotion) [incsearch](https://github.com/haya14busa/incsearch.vim) [incsearch-easymotion](https://github.com/haya14busa/incsearch-easymotion.vim) [incsearch-fuzzy](https://github.com/haya14busa/incsearch-fuzzy.vim)
 
 ## 工具
 
