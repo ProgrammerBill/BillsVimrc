@@ -76,3 +76,6 @@
 [submodule "plugged/incsearch-fuzzy.vim"]
 	path = plugged/incsearch-fuzzy.vim
 	url = https://github.com/haya14busa/incsearch-fuzzy.vim
+[submodule "plugged/json-formatter.vim"]
+	path = plugged/json-formatter.vim
+	url = https://github.com/XadillaX/json-formatter.vim
