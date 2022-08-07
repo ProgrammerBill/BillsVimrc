@@ -31,6 +31,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim' | Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'XadillaX/json-formatter.vim'
+Plug 'darfink/starsearch.vim'
 call plug#end()
 
 set nu " Show line numbers.

@@ -79,3 +79,9 @@
 [submodule "plugged/json-formatter.vim"]
 	path = plugged/json-formatter.vim
 	url = https://github.com/XadillaX/json-formatter.vim
+[submodule "plugged/vim-fugitive"]
+	path = plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "plugged/starsearch.vim"]
+	path = plugged/starsearch.vim
+	url = https://github.com/darfink/starsearch.vim
