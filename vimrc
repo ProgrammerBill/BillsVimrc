@@ -28,7 +28,7 @@ Plug 'honza/vim-snippets'
 Plug 'rhysd/vim-clang-format', { 'for': 'cpp,[*].ch' }
 Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim' | Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch.vim', {'branch': 'master'} | Plug 'haya14busa/incsearch-easymotion.vim' , {'branch': 'master'} | Plug 'haya14busa/incsearch-fuzzy.vim', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
 Plug 'XadillaX/json-formatter.vim'
 Plug 'darfink/starsearch.vim'
