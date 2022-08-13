@@ -13,22 +13,24 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'preservim/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'gburca/vim-logcat'
+Plug 'gburca/vim-logcat', {'branch': 'master'}
 Plug 'prabirshrestha/vim-lsp'
 Plug 'liuchengxu/vim-clap'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hsanson/vim-android'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jszakmeister/markdown2ctags', { 'for': 'markdown' }
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips', {'branch': 'master'}
+Plug 'honza/vim-snippets', {'branch': 'master'}
 Plug 'rhysd/vim-clang-format', { 'for': 'cpp,[*].ch' }
-Plug 'mhinz/vim-startify'
-Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim', {'branch': 'master'} | Plug 'haya14busa/incsearch-easymotion.vim' , {'branch': 'master'} | Plug 'haya14busa/incsearch-fuzzy.vim', {'branch': 'master'}
+Plug 'mhinz/vim-startify', {'branch': 'master'}
+Plug 'easymotion/vim-easymotion', {'branch': 'master'}
+Plug 'haya14busa/incsearch.vim', {'branch': 'master'}
+Plug 'haya14busa/incsearch-easymotion.vim' , {'branch': 'master'}
+Plug 'haya14busa/incsearch-fuzzy.vim', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
 Plug 'XadillaX/json-formatter.vim'
 Plug 'darfink/starsearch.vim'
