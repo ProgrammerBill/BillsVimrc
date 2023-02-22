@@ -1,9 +1,10 @@
-" ____  _ _ _  ____                  _      __     ___
-"| __ )(_) | |/ ___|___  _ __   __ _( )___  \ \   / (_)_ __ ___
-"|  _ \| | | | |   / _ \| '_ \ / _` |// __|  \ \ / /| | '_ ` _ \
-"| |_) | | | | |__| (_) | | | | (_| | \__ \   \ V / | | | | | | |
-"|____/|_|_|_|\____\___/|_| |_|\__, | |___/    \_/  |_|_| |_| |_|
-"                              |___/
+"
+"██████╗ ██╗██╗     ██╗      ██████╗ ██████╗ ███╗   ██╗ ██████╗ ███████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"██╔══██╗██║██║     ██║     ██╔════╝██╔═══██╗████╗  ██║██╔════╝ ██╔════╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"██████╔╝██║██║     ██║     ██║     ██║   ██║██╔██╗ ██║██║  ███╗███████╗    ██║   ██║██║██╔████╔██║██████╔╝██║
+"██╔══██╗██║██║     ██║     ██║     ██║   ██║██║╚██╗██║██║   ██║╚════██║    ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+"██████╔╝██║███████╗███████╗╚██████╗╚██████╔╝██║ ╚████║╚██████╔╝███████║     ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"╚═════╝ ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝      ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
 
 call plug#begin('~/.vim/plugged')
@@ -18,12 +19,12 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'liuchengxu/vim-clap'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hsanson/vim-android'
-Plug 'fatih/vim-go', { 'for': 'go' }
+"Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jszakmeister/markdown2ctags', { 'for': 'markdown' }
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 Plug 'godlygeek/tabular' | Plug 'preservim/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
-Plug 'SirVer/ultisnips', {'branch': 'master'}
+"Plug 'SirVer/ultisnips', {'branch': 'master'}
 Plug 'honza/vim-snippets', {'branch': 'master'}
 Plug 'rhysd/vim-clang-format', { 'for': 'cpp,[*].ch' }
 Plug 'mhinz/vim-startify', {'branch': 'master'}
@@ -530,6 +531,8 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -749,16 +752,16 @@ let g:mkdp_theme = 'dark'
 
 "let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
 
-" ===================================== ultisnips ================================
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"" ===================================== ultisnips ================================
+"" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+"" - https://github.com/Valloric/YouCompleteMe
+"" - https://github.com/nvim-lua/completion-nvim
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 
 " ===================================== vim-clang-format ================================
