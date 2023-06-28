@@ -16,7 +16,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'gburca/vim-logcat', {'branch': 'master'}
 Plug 'prabirshrestha/vim-lsp'
-Plug 'liuchengxu/vim-clap'
+"Plug 'liuchengxu/vim-clap'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hsanson/vim-android'
 "Plug 'fatih/vim-go', { 'for': 'go' }
@@ -35,6 +35,7 @@ Plug 'haya14busa/incsearch-fuzzy.vim', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
 Plug 'XadillaX/json-formatter.vim'
 Plug 'darfink/starsearch.vim'
+Plug 'github/copilot.vim'
 call plug#end()
 
 set nu " Show line numbers.
@@ -69,7 +70,7 @@ set encoding=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
+set fileencodings=ucs-bom,utf-8,cp936,gb2312,gb18030
 set fileencoding=utf-8
 
 " Set leader key
@@ -472,7 +473,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " ===================================== vim-clap ================================
-let g:clap_theme = 'material_design_dark'
+"let g:clap_theme = 'material_design_dark'
 
 " ===================================== coc.nvim ================================
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
@@ -829,3 +830,6 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 let &t_TI = ""
 let &t_TE = ""
+
+set keyprotocol=
+let &term=&term
