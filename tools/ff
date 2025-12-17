@@ -1,20 +1,44 @@
 #!/bin/bash
+
 path=$(fzf)
-path_length=${#path}
-if [ $path_length -gt 0 ];then
-	echo "relative path is "$path
-	echo "absolute path is "$(pwd)"/"$path
-    file_message=`file $path`
-    echo "$file_message"
+[ -z "$path" ] && exit 0
 
+abs_path="$(realpath -m "$path" 2>/dev/null || echo "$path")"
 
-    if [[ $file_message == *"text"* ]]
-    then
-            vim $path
-            history -s "vim $path"
-    elif [[ $file_message == *"HTML"* ]]
-    then
-            google-chrome-stable $path
+echo "relative path is $path"
+echo "absolute path is $abs_path"
 
-    fi
+# follow symbolic link
+file_info=$(file -L "$path")
+echo "file_info: $file_info"
+
+# ---------- directory ----------
+if [ -d "$path" ]; then
+    cd "$path" || exit
+    pwd
+    history -s "cd $path"
+    exit 0
 fi
+
+# ---------- html ----------
+if [[ "$file_info" == *"HTML"* ]]; then
+    google-chrome-stable "$abs_path" >/dev/null 2>&1 &
+    exit 0
+fi
+
+# ---------- text-like ----------
+if [[ "$file_info" == *"text"* ]] \
+   || [[ "$file_info" == *"ASCII"* ]] \
+   || [[ "$file_info" == *"UTF-8"* ]] \
+   || [[ "$file_info" == *"diff"* ]] \
+   || [[ "$file_info" == *"patch"* ]] \
+   || [[ "$file_info" == *"script"* ]]; then
+
+    vim "$path"
+    history -s "vim $path"
+    exit 0
+fi
+
+# ---------- fallback ----------
+xdg-open "$abs_path" >/dev/null 2>&1 &
+
